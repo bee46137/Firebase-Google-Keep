@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Keep</title>
+
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.google.com/icons?icon.platform=web&icon.style=Filled&icon.set=Material+Icons">
@@ -212,7 +216,13 @@
         </div>
 
         <div class="notes">
-        </div>
+          
+
+
+
+            
+
+    </div>
 
     <div class="modal">
         <div class="modal-content">
@@ -292,9 +302,43 @@
             </div>
         </div>
     </div>
+   
+    <script src="index.js"></script>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+    
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+   import { getAuth } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
+   import { getFirestore } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCCtQ5mptIq5ffkBvfSnloSIRJctX34UEs",
+      authDomain: "keep-zaio.firebaseapp.com",
+      projectId: "keep-zaio",
+      storageBucket: "keep-zaio.appspot.com",
+      messagingSenderId: "1054645861726",
+      appId: "1:1054645861726:web:7d357bab768ff66bd5a3cf"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    console.log(app)
+
+</script>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js" integrity="sha512-AvtLzKgbVcTZJ0QZ3nLJoTGN2wiE/emjebM9xneyqhtEBRTsNB+8oeQGkOmyOF+gnJd7k3Zvnghs9m6EuTpTEw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="index.js"></script>
     
-</body>
+
+</body>  
+
+
 </html>

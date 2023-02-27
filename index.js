@@ -10,9 +10,10 @@ class Note {
 
 
 
-class App {
+class Application {
 
     constructor(){
+
 
         this.notes =JSON.parse(localStorage.getItem('notes')) || [];
 
@@ -33,6 +34,10 @@ class App {
         this.$closeModalForm = document.querySelector("#modal-button");
         this.$sidebar = document.querySelector(".sidebar");
         this.$sidebarActiveItem = document.querySelector(".active-item");
+
+
+        // Initialize the FirebaseUI Widget using Firebase.
+        this.ui = new firebaseui.auth.AuthUI(app.auth());
 
         this.addEventListeners();
         this.displayNotes();
@@ -224,7 +229,7 @@ render(){
 
         this.$notes.innerHTML = this.notes.map((note) => 
             `
-            <div class="note" id = "${note.id}" onmouseover = "app.handleMouseOverNote(this)" onmouseout = "app.handleMouseOutNote(this)">
+            <div class="note" id = "${note.id}" onmouseover = "application.handleMouseOverNote(this)" onmouseout = "application.handleMouseOutNote(this)">
                 <span class="material-symbols-outlined check-circle">
                     check_circle
                 </span>
@@ -278,6 +283,4 @@ render(){
 }
 
 
-
-
-const app = new App();
+const application = new Application();
