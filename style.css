@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+input:focus {
+    outline: none;
+}
+
+
+/*  TOP NAV BAR STYLING  */
+/* GENERAL NAV BAR STYLING */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 64px;
+    padding: 8px;
+    color: #767676;
+    border-bottom: 1px solid #dadce0;
+}
+
+.material-symbols-outlined {
+    padding: 12px;
+}
+
+.hover:hover {
+    background: #f1f3f4;
+    color: black;
+    border-radius: 50%;
+    cursor: pointer;
+    
+}
+
+.tooltip {
+    position: relative;
+    display: flex;
+}
+
+.tooltip-text {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    font-size: 0.78rem;
+    background: #323232;
+    color: white;
+    opacity: 0.8;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+    visibility: hidden;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+}
+
+/* LOGO AREA STYLING (TOP RIGHT) */
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo .gb_Ec {
+    padding-left: 4px;
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    padding-left: 4px;
+}
+
+/* SEARCH BAR STYLING */
+
+.search-area span {
+    margin-left: 10px;
+}
+
+.search-area {
+    display: flex;
+    align-items: center;
+    background: #f1f3f4;
+    height: 46px;
+    width: 524px;
+    border-radius: 8px 8px;
+}
+
+.search-area input {
+    justify-content: center;
+    border: none;
+    Height:100%;
+    width: 80%;
+    background: #f1f3f4;
+    font-size: 1rem;
+    margin-left: 5px;
+}
+
+/* SETTING STYLING */
+
+.settings{
+    display: flex;
+}
+
+/* PROFILE ACTIONS STYLING */
+
+
+.profile-actions {
+    display: flex;
+}
+
+
+
+
+/* MAIN SECTION STYLING */
+/* SIDEBAR STYLING */
+
+.active {
+    background:#fef0c3; 
+    border-radius: 50%;
+    color: black;
+}
+
+.active:hover {
+    background: #fef0c3;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 64px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    color: #5f6368;
+    width: 80px;
+    overflow-x: hidden;
+    height: 100%;
+    transition: 0.8s;
+}
+
+.sidebar-hover {
+    box-shadow: 0 3px 5px rgb(0 0 0 / 20%), inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%);
+    background: white;
+}
+
+
+
+.sidebar .sidebar-item {
+    padding: 3px 0;
+    cursor: pointer;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.sidebar-item:hover {
+    background: #f1f3f4;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.sidebar-item .material-symbols-outlined {
+    margin-left: 18px;
+}
+
+.sidebar-item .sidebar-text {
+    color: black;
+    font-size: 0.9rem;
+    vertical-align: middle;
+    margin-left: 20px;
+    width: 250px;
+}
+
+.sidebar-item :nth-child(1) {
+    margin-top: 5px;
+}
+
+
+.sidebar-active-item {
+    background-color: #fef0c3;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.sidebar-active-item:hover {
+    background-color: #fef0c3;
+ 
+}
+
+
+
+
+/* FORM CONTAINER STYLING */
+/* FORM CONTAINER BEFORE CLICK */
+
+.form-container {
+    display: flex;
+    margin: 35px auto;
+    width: 598px;
+    /* height: 46px; */
+    box-shadow: 0 3px 5px rgb(0 0 0 / 20%), inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%);
+    border-radius: 7px;
+    border: 1px solid #e0e1e0;
+    
+}
+
+.form-container .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 85%;
+    /* margin: 5px 0; */
+    
+}
+
+
+.note-text {
+    font-size: 1rem;
+    border: none;
+    padding: 10px 15px;
+    width: 100%;
+}
+
+.form-actions{
+    display: flex;
+    align-items: center;
+    color: #767676;
+    background-color: white;
+}
+
+/* FORM CONTAINER AFTER CLICK STYLES */
+
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.active-form {
+    display: none;
+}
+
+.active-form .form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+}
+
+.active-form .form-actions .form{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    
+}
+
+.note-title {
+    font-size: 1rem;
+    border: none;
+    padding: 10px 15px;
+    width: 100%;
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.small-icon {
+    color: black;
+    font-size: 1.1rem !important;
+   
+    
+}
+
+.close-button {
+    margin-right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+
+/* NOTES STYLING */
+
+.notes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 100px;
+}
+
+.note {
+    background-color: white;
+    width: 240px;
+    height: 104px;
+    border-radius: 7px;
+    border: 1px solid #e0e1e0;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+}
+
+.note:hover {
+    box-shadow: 0 3px 5px rgb(0 0 0 / 20%), inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%);
+}
+
+.note .title-note {
+    width: 100%;
+    padding: 10px 0 0 15px;
+    
+}
+
+.note .text-note {
+    width: 100%;
+    padding: 10px 0 0 15px;
+}
+
+.footer-note {
+    display: flex;
+    margin-top: 15px;
+    justify-content: center;
+    visibility: hidden;
+}
+    
+
+.footer-note .material-symbols-outlined {
+    color: #5f6368;
+    padding: 0;
+}
+
+.footer-note .tooltip {
+    width: 17%;
+    display: flex;
+    justify-content: center;
+}
+
+.check-circle {
+    position: absolute;
+    padding: 0;
+    left: -10px; 
+    top: -10px;
+    visibility: hidden;
+}
+
+
+/* MODAL STYLING */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    visibility: hidden;
+}
+
+.open-modal {
+    visibility: visible;
+}
+
+.modal-content {
+    width: 100%;
+    position: relative;
+    top: 30%;
+    
+}
+
+#modal-form {
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
