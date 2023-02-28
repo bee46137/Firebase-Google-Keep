@@ -37,7 +37,7 @@ class Application {
 
 
         // Initialize the FirebaseUI Widget using Firebase.
-        this.ui = new firebaseui.auth.AuthUI(app.auth());
+        this.ui = new firebaseui.auth.AuthUI(firebase.auth());
 
         this.addEventListeners();
         this.displayNotes();

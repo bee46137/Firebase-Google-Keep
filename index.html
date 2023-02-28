@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.google.com/icons?icon.platform=web&icon.style=Filled&icon.set=Material+Icons">
+    <!-- <link rel="stylesheet" href="https://fonts.google.com/icons?icon.platform=web&icon.style=Filled&icon.set=Material+Icons"> -->
 
     <link rel="shortcut icon" href="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" srcset="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png 1x, https://www.gstatic.com/images/branding/product/2x/keep_2020q4_48dp.png 2x">
 
@@ -303,9 +303,9 @@
         </div>
     </div>
    
-    <script src="index.js"></script>
 
-<script type="module">
+
+<!-- <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
     
@@ -330,13 +330,64 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    console.log(app)
+    console.log(app) -->
 
-</script>
+<!-- </script> -->
 
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js" integrity="sha512-AvtLzKgbVcTZJ0QZ3nLJoTGN2wiE/emjebM9xneyqhtEBRTsNB+8oeQGkOmyOF+gnJd7k3Zvnghs9m6EuTpTEw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCCtQ5mptIq5ffkBvfSnloSIRJctX34UEs",
+      authDomain: "keep-zaio.firebaseapp.com",
+      projectId: "keep-zaio",
+      storageBucket: "keep-zaio.appspot.com",
+      messagingSenderId: "1054645861726",
+      appId: "1:1054645861726:web:7d357bab768ff66bd5a3cf"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
     
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // Add a new document in collection "cities"
+    // db.collection("users").doc("actualsignedinuserid").set({
+    //     notes: [
+    //         {
+    //             id: "123asdasdasd",
+    //             title: "title",
+    //             text: "text"
+    //         }
+    //     ]
+    // })
+    //     .then(() => {
+    //         console.log("Document successfully written!");
+    //     })
+    //     .catch((error) => {
+    //         console.error("Error writing document: ", error);
+    //     });
+
+    // var docRef = db.collection("users").doc("actualsignedinuserid");
+
+    // docRef.get().then((doc) => {
+    //     if (doc.exists) {
+    //         console.log("Document data:", doc.data().notes);
+    //     } else {
+    //         // doc.data() will be undefined in this case
+    //         console.log("No such document!");
+    //     }
+    // }).catch((error) => {
+    //     console.log("Error getting document:", error);
+    // });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js" integrity="sha512-AvtLzKgbVcTZJ0QZ3nLJoTGN2wiE/emjebM9xneyqhtEBRTsNB+8oeQGkOmyOF+gnJd7k3Zvnghs9m6EuTpTEw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="index.js"></script>
 
 </body>  
 
