@@ -64,6 +64,10 @@ nav {
     visibility: visible;
 }
 
+#firebaseui-auth-container {
+   display: flex;
+}
+
 /* LOGO AREA STYLING (TOP RIGHT) */
 
 .logo-area {
@@ -125,6 +129,15 @@ nav {
     display: flex;
 }
 
+.profile-actions .tooltip{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-user {
+    cursor: pointer;
+}
 
 
 

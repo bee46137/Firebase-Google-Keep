@@ -35,12 +35,61 @@ class Application {
         this.$sidebar = document.querySelector(".sidebar");
         this.$sidebarActiveItem = document.querySelector(".active-item");
 
+        this.$application = document.querySelector("#application");
+        this.$firebaseAuthContainer = document.querySelector("#firebaseui-auth-container");
+        this.$authUserText = document.querySelector(".auth-user");
+        this.$logoutButton = document.querySelector(".logout");
+
+
 
         // Initialize the FirebaseUI Widget using Firebase.
+        
         this.ui = new firebaseui.auth.AuthUI(firebase.auth());
+        this.handleAuth();
 
         this.addEventListeners();
         this.displayNotes();
+    }
+
+    handleAuth() {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+              this.redirectToApp();
+              this.$authUserText.innerHTML = user.displayName;
+              var uid = user.uid;
+              // ...
+            } else {
+              this.redirectToAuth();
+            }
+            console.log(user)
+          });
+    }
+
+    handleLogout () {
+        firebase.auth().signOut().then(() => {
+            alert("You've successfully logged out.");
+            this.redirectToAuth();
+          }).catch((error) => {
+            alert("Apologies, an error occured. error report sent.");
+            console.log(error);
+          });
+    }
+
+    redirectToApp() {
+        this.$application.style.display = "block";
+        this.$firebaseAuthContainer.style.display = "none";
+    }
+
+    redirectToAuth() {
+        this.$application.style.display = "none";
+        this.$firebaseAuthContainer.style.display = "block";
+
+        this.ui.start('#firebaseui-auth-container', {
+            signInOptions: [
+              firebase.auth.EmailAuthProvider.PROVIDER_ID
+            ],
+            // Other config options...
+          });
     }
 
     addEventListeners(){
@@ -71,6 +120,10 @@ class Application {
         this.$sidebar.addEventListener("mouseout", (event) => {
             this.handleToggleSidebar();
         
+        })
+
+        this.$logoutButton.addEventListener("click", (event) => {
+            this.handleLogout();
         })
 
         
