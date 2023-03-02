@@ -13,6 +13,15 @@ input:focus {
     outline: none;
 }
 
+/* sign in options */
+/* email sign in */
+
+.mdl-card form{
+    display: flex;
+    flex-direction: column;
+   
+}
+
 
 /*  TOP NAV BAR STYLING  */
 /* GENERAL NAV BAR STYLING */
