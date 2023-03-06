@@ -70,7 +70,7 @@ class Application {
             alert("You've successfully logged out.");
             this.redirectToAuth();
           }).catch((error) => {
-            alert("Apologies, an error occured. error report sent.");
+            alert("Apologies, an error occured. Error report sent.");
             console.log(error);
           });
     }
