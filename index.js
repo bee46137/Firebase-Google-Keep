@@ -13,12 +13,10 @@ class Note {
 class Application {
 
     constructor(){
-
-
-        this.notes =JSON.parse(localStorage.getItem('notes')) || [];
-
+        this.notes = [];
         this.selectedNoteId = "";
         this.miniSidebar = true;
+        this.userId = "";
 
         this.$selectedNoteId = "";
         this.$activeForm = document.querySelector(".active-form");
@@ -54,9 +52,11 @@ class Application {
     handleAuth() {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-              this.redirectToApp();
+            
               this.$authUserText.innerHTML = user.displayName;
               var uid = user.uid;
+              this.userId = user.uid;
+              this.redirectToApp();
               // ...
             } else {
               this.redirectToAuth();
@@ -78,6 +78,7 @@ class Application {
     redirectToApp() {
         this.$application.style.display = "block";
         this.$firebaseAuthContainer.style.display = "none";
+        this.fetchNotesFromDB();
     }
 
     redirectToAuth() {
@@ -85,6 +86,17 @@ class Application {
         this.$firebaseAuthContainer.style.display = "block";
 
         this.ui.start('#firebaseui-auth-container', {
+                callbacks: {
+                  signInSuccessWithAuthResult: (authResult, redirectUrl) => {
+                    // User successfully signed in.
+                    // Return type determines whether we continue the redirect automatically
+                    // or whether we leave that to developer to handle.
+                    this.userId = authResult.user.uid;
+                    this.redirectToApp();
+                    this.$authUserText.innerHTML = user.displayName;
+                    // var uid = user.uid;
+                  },
+                },
             signInOptions: [
               firebase.auth.EmailAuthProvider.PROVIDER_ID,
               firebase.auth.GoogleAuthProvider.PROVIDER_ID
@@ -204,7 +216,7 @@ class Application {
 
     addNote ({title, text}) {
         if (text != ""){
-            const newNote = new Note (cuid(), title, text);
+            const newNote = {id: cuid(), title, text};
             this.notes = [...this.notes, newNote]
             this.render();
         }
@@ -268,15 +280,48 @@ class Application {
         }
     }
 
+    fetchNotesFromDB () {
+        var docRef = db.collection("users").doc(this.userId);
 
-saveNotes(){
-    localStorage.setItem('notes', JSON.stringify(this.notes));
-}
+        docRef.get().then((doc) => {
+            if (doc.exists) {
+                console.log("Document data:", doc.data().notes);
+                this.notes = doc.data().notes;
+                this.displayNotes();
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!")
+                db.collection("users").doc(this.userId).set({
+                    notes: []
+                })
+                    .then(() => {
+                        console.log("User successfully created.!");
+                    })
+                    .catch((error) => {
+                        console.error("Error writing document: ", error);
+                    });
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+        }
 
-render(){
-    this.saveNotes ();
-    this.displayNotes();
-}
+    saveNotes() {
+        db.collection("users").doc(this.userId).set({
+            notes: this.notes
+            })
+            .then(() => {
+                console.log("Document successfully written!");
+            })
+            .catch((error) => {
+                console.error("Error writing document: ", error);
+            });
+    }
+
+    render(){
+        this.saveNotes ();
+        this.displayNotes();
+    }
 
 
     displayNotes(){
